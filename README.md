@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
+# ArgoBot-Drive-Training
+New developer LabVIEW training using the [ArgoBot platform](http://playingwithfusion.com/productview.php?pdid=65&catid=1009).  This training explores various methods of controlling a robot drive train.
 
-You can use the [editor on GitHub](https://github.com/FRC1756-Argos/ArgoBot-Drive-Training/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Prerequisites
++ [LabVIEW](https://www.labviewmakerhub.com/doku.php?id=libraries:labview:start) - Any recent version should work, but the examples are validated using LabVIEW 2016 as distributed by FIRST for the 2017 season
++ [LINX](http://sine.ni.com/nips/cds/view/p/lang/en/nid/212478) - LINX provides the interfaces to control the ArgoBot hardware with LabVIEW
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Tutorials
+See the [tutorials](https://frc1756-argos.github.io/ArgoBot-Drive-Training/) for exercises using this repository.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FRC1756-Argos/ArgoBot-Drive-Training/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Acknowledgments
+Thanks to [Playing With Fusion](https://github.com/PlayingWithFusion) for supporting the ArgoBot platform and developing the base software used in this training.  ArgoBot hardware, software, and video tutorials can be found on the [Playing With Fusion website](http://playingwithfusion.com/productview.php?pdid=65&catid=1009)
