@@ -30,3 +30,7 @@ Digging deeper into LabVIEW
 
 {:start="10"}
 10. [Polymorphic VIs](pages/tutorials/tutorial10.md)
+
+## Live Training Presentations
+
+1. Overview Presentation \([odp](presentations/OverviewPresentation.odp)\)\([pdf](presentations/OverviewPresentation.pdf)\)
