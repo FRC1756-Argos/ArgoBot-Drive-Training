@@ -5,6 +5,9 @@ permalink: /tutorials/0/index.html
 [PREV]: /index.html
 [HOME]: /index.html
 [NEXT]: /tutorials/1/index.html
+
+{% capture baseImagePath %}{{ site.baseurl }}/assets/images/tutorials/0{% endcapture %}
+
 # Tutorial 0: Setup
 
 Welcome!  In this tutorial, you will set up your computer to run the other tutorials.
@@ -23,9 +26,9 @@ ArgoBots use LINX, so we will install this library to begin.
 2. Click the "LINX Download" link in the resources tab
 3. Click the "Download Toolkit" button at the top of the page.  This will launch the LabVIEW VI Package Manager
 4. In the LabVIEW Package Manager window, click the Install button.  This may take a while and may need to install additional libraries.
-   ![VIPM Install Window]({{ site.baseurl }}/assets/images/tutorials/0/LINX_VIPM.png)
+   ![VIPM Install Window]({{ baseImagePath }}/LINX_VIPM.png)
 5. If the installation completes successfully, you should see a confirmation that looks like the image below
-   ![VIPM Success Window]({{ site.baseurl }}/assets/images/tutorials/0/LINX_VIPM_Success.png)
+   ![VIPM Success Window]({{ baseImagePath }}/LINX_VIPM_Success.png)
 
 ## Clone Training Files From GitHub
 
@@ -36,22 +39,22 @@ You may use any git client to clone this repository, but I've included the GitHu
 1. Download and install the GitHub desktop client from [GitHub's website](https://desktop.github.com/)
   - If you have a GitHub account, you can sign in during the installation process.  You can also create a free account
 2. Click the "Clone a repository button" on the GitHub client start page
-   ![GitHub Clone Repo]({{ site.baseurl }}/assets/images/tutorials/0/GitHub_Clone_0.png)
+   ![GitHub Clone Repo]({{ baseImagePath }}/GitHub_Clone_0.png)
 3. Choose the URL `https://github.com/FRC1756-Argos/ArgoBot-Drive-Training.git` and a location on your computer to download the files to
-   ![GitHub Clone URL]({{ site.baseurl }}/assets/images/tutorials/0/GitHub_Clone_1.png)
+   ![GitHub Clone URL]({{ baseImagePath }}/GitHub_Clone_1.png)
 4. Make sure you have the master branch checked out
-   ![GitHub Checkout]({{ site.baseurl }}/assets/images/tutorials/0/GitHub_Clone_2.png)
+   ![GitHub Checkout]({{ baseImagePath }}/GitHub_Clone_2.png)
 
 ## Verify Environment
 
 Now that everything's ready, let's make sure all the pieces are working.
 
 1. In the GitHub desktop client, select "Repository">"Show in Explorer"
-   ![Open Code]({{ site.baseurl }}/assets/images/tutorials/0/Verify_0.png)
+   ![Open Code]({{ baseImagePath }}/Verify_0.png)
 2. In the `src` folder, open `ArgoBot_Main.vi`
-   ![Open Code]({{ site.baseurl }}/assets/images/tutorials/0/Verify_1.png)
+   ![Open Code]({{ baseImagePath }}/Verify_1.png)
 3. Make sure the run arrow is solid white as shown below
-   ![Open Code]({{ site.baseurl }}/assets/images/tutorials/0/Verify_2.png)
+   ![Open Code]({{ baseImagePath }}/Verify_2.png)
 
 Congratulations!  You're ready to start the training exercises!  Click the link below to begin the first tutorial.
 
