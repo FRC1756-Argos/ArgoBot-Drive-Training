@@ -4,6 +4,13 @@ permalink: /index.html
 ---
 # New Developer Training
 
+## Set Up Your Environment
+
+Start here if this is your first time on a new computer
+
+{:start="0"}
+0. [Setup](pages/tutorials/tutorial0.md)
+
 ## Drive Code Models
 
 Start here to drive your robot with different joystick controls
