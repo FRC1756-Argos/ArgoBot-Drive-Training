@@ -2,9 +2,9 @@
 title: "Tutorial 0: Setup"
 permalink: /tutorials/0/index.html
 ---
-[PREV]: /index.html
-[HOME]: /index.html
-[NEXT]: /tutorials/1/index.html
+[PREV]: {{site.baseurl}}/index.html
+[HOME]: {{site.baseurl}}/index.html
+[NEXT]: {{site.baseurl}}/tutorials/1/index.html
 
 {% capture baseImagePath %}{{ site.baseurl }}/assets/images/tutorials/0{% endcapture %}
 
