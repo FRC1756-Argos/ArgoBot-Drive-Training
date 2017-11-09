@@ -39,7 +39,7 @@ Just like tank drive, we'll start by opening the drive VI and unbundling the joy
 
 When you are complete, you should end up with the following:
 
-![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Unbundle_0.png)
+![Arcade Unbundle]({{ baseImagePath }}/Arcade_Unbundle_0.png)
 
 ## Control Design
 
@@ -63,14 +63,14 @@ If you have any ideas on how to do this, try it on your own before following the
 
 For this design, we will be using blocks from the numeric palette as shown below:
 
-![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Palette_0.png)
+![Numeric Palette]({{ baseImagePath }}/Arcade_Palette_0.png)
 
 1. First, we'll make something that looks like the tank drive, but with only input from the left joystick.
    This will take care of the forward/backward drive component.
-![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Implement_0.png)
+![Arcade Fwd/Rev]({{ baseImagePath }}/Arcade_Implement_0.png)
 2. Now, use the insert command to add "add" blocks to both motor wires.
 3. Add the `right_x` joystick value to both motor wires
-![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Implement_1.png)
+![Arcade Final]({{ baseImagePath }}/Arcade_Implement_1.png)
 4. Save your VI
 
 ## Try It Out
@@ -80,7 +80,7 @@ Now that we've got a new drive control VI, let's try driving with it.
 1. Open `ArgoBot_Main.vi`
 2. Go to the block diagram
 3. Right click on the `Drive_Tank` block and select "Replace">"All Palettes">"Select A VI..."
-![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Integrate_0.png)
+![Arcade Integration]({{ baseImagePath }}/Arcade_Integrate_0.png)
 4. Select `Drive_Arcade.vi`
 5. Save and run the VI
 
