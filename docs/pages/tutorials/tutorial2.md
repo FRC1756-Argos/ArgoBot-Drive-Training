@@ -16,7 +16,7 @@ This exercise will skip over some of the more detailed steps covered in the tank
 * TOC
 {:toc}
 
-## What is "Tank Drive"?
+## What is "Arcade Drive"?
 
 ![Arcade Control Scheme]({{ baseImagePath }}/Arcade_Control.png)
 
