@@ -39,10 +39,10 @@ Just like before, we'll start by opening the drive VI and unbundling the joystic
 2. Go to the block diagram
 3. Using the tool palette, insert an "Unbundle By Name" block
 4. Connect the unbundle block to the `Joystick_In` control
-5. Expand the unbundle to 2 cells
-6. Select `Joystick.Y_Axis_Left` and `Joystick.X_Axis_Right`,
+5. Expand the unbundle to 3 cells
+6. Select `Joystick.RB`, `Joystick.Y_Axis_Left`, and `Joystick.X_Axis_Right`
 
-When you are complete, your unbundle should be identical to arcade drive
+When you are complete, your unbundle should be identical to arcade drive except with an additional boolean (green) output.
 
 ## Control Design
 
@@ -64,6 +64,16 @@ left = t_left + skim(t_right)
 right = t_right + skim(t_left)
 ```
 
+That might seem pretty complicated, but we can simplify this if we think about what we want to do.
+
+Here's a simpler design which accomplishes the same thing:
+
+```
+turnPower = turn * |throttle|
+left = throttle + turnPower
+right = throttle - turnPower
+```
+
 Don't worry if you're unsure how this works.  For now, we will implement the design to evaluate it's advantages and disadvantages.
 How it works may become easier to understand as we go along.
 
@@ -71,15 +81,13 @@ If you have any ideas on how to do this, try it on your own before following the
 
 ## Implement the Design
 
-1. You may notice that the `t_left` and `t_right` calculations are exactly the same as arcade drive, so let's make arcade drive again.
-![Cheezy Arcade Base]({{ baseImagePath }}/Cheezy_ArcadeStart_0.png)
-2. Next, we need to implement the `skim(v)` function.  Since we've already created math and comparison operators, the full steps will be omitted in this tutorial.
-   One new component is the `gain` input, which can be created by right clicking on an orange wire and selecting "Create">"Control".
-   This creates an input you can modify on the front panel.  Alternatively, you can use a constant.
-3. When you're done, you should get something that looks like the following:
-![Cheezy Final]({{ baseImagePath }}/Cheezy_Final.png)
-4. Wow, that's a doozy... Can you see how LabVIEW code can quickly become messy?  One thing we can do to improve this is separate the `skim(v)` function into a separate VI.
-   If you would like to do that now, try it out.  We will come back to this concept in refinements later.
+1. You may notice that `left` and `right` both require `turnPower`, so let's calculate that first.
+![Cheezy Turn Power]({{ baseImagePath }}/Cheezy_TurnPower.png)
+2. Next, let's make the left and right drive outputs.  This is nearly identical to arcade drive.
+![Cheezy Drive Output]({{ baseImagePath }}/Cheezy_DriveOut.png)
+3. Technically, we're done now, but let's use the right bumper to switch back and forth between arcade drive and Cheezy drive.  This will make it more clear how the two are different.  Add in a selector, like in button drive, to switch between arcade and Cheezy drive.  See if you can do this without looking at the final product. 
+4. Once you're done, your VI should look like the VI below.
+![Cheezy Drive Output]({{ baseImagePath }}/Cheezy_Final.png)
 5. Save your VI
 
 ## Try It Out
@@ -98,7 +106,7 @@ What did you like more or less about this drive style?
 Is there anything that makes it hard to drive?
 How does changing the gain change how it drives?
 
-Try switching between Arcade and Cheezy drive.  Which do you like better?  Can you think of the advantages/disadvantages of the different approaches?
+Try switching between Arcade and Cheezy drive by holding the right bumper on the controller.  Which do you like better?  Can you think of the advantages/disadvantages of the different approaches?
 
 Congratulations!  Now you have four different drive styles under your belt!  But are any of them ready for competition?
 These are the building blocks of more advanced controls, and we'll explore some refinements and advanced features next.
