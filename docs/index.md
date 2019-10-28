@@ -36,7 +36,6 @@ Time to improve the basics to make driving your robot even better
 Digging deeper into LabVIEW
 
 {:start="10"}
-10. [Polymorphic VIs](pages/tutorials/tutorial10.md)
 
 ## Live Training Presentations
 

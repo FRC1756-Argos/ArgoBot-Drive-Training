@@ -14,10 +14,12 @@ Welcome!  In this tutorial, you will set up your computer to run the other tutor
 If you already have your computer set up, you can move on to [the first exercise][NEXT].
 You should already have LabVIEW installed before following these steps.
 
+For ArgoBot v2, you will need [CTRE Phoenix](http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources) installed as well.
+
 * TOC
 {:toc}
 
-## Install LINX
+## Install LINX \(ArgoBot v1 Only\)
 
 LINX is a platform to run LabVIEW code on various embedded devices.
 ArgoBots use LINX, so we will install this library to begin.
@@ -49,12 +51,26 @@ You may use any git client to clone this repository, but I've included the GitHu
 
 Now that everything's ready, let's make sure all the pieces are working.
 
+### ArgoBot v1
+
 1. In the GitHub desktop client, select "Repository">"Show in Explorer"
-   ![Open Code]({{ baseImagePath }}/Verify_0.png)
-2. In the `src` folder, open `ArgoBot_Main.vi`
-   ![Open Code]({{ baseImagePath }}/Verify_1.png)
+   ![GitHub Explore]({{ baseImagePath }}/Verify_0.png)
+2. In the `src/ArgobotV1` folder, open `ArgoBot_Main.vi`
+   ![Explorer Navigate]({{ baseImagePath }}/Verify_1.png)
 3. Make sure the run arrow is solid white as shown below
    ![Open Code]({{ baseImagePath }}/Verify_2.png)
+
+### ArgoBot v2
+
+1. In the GitHub desktop client, select "Repository">"Show in Explorer"
+   ![GitHub Explore]({{ baseImagePath }}/Verify_0.png)
+2. In the `src/ArgobotV2` folder, open `ArgoBotV2.lvproj`
+   ![Explorer Navigate]({{ baseImagePath }}/Verify_1_v2.png)
+3. Open `Robot Main.vi` in the project explorer window
+   ![Project Explorer]({{ baseImagePath }}/Verify_2_v2.png)
+4. Make sure the run arrow is solid white as shown below
+   ![Open Code]({{ baseImagePath }}/Verify_3_v2.png)
+
 
 Congratulations!  You're ready to start the training exercises!  Click the link below to begin the first tutorial.
 
