@@ -1,6 +1,10 @@
 theme: jekyll-theme-dinky
 title: ArgoBot Drive Training
-description: Here you'll find some tutorials to write drive code for the ArgoBot (or any robot) using LabVIEW
+description: Here you'll find some tutorials to write drive code for the ArgoBot (or any robot) using LabVIEW or C++
+
+sass:
+  sass_dir: assets/css
+  style: :compressed
 
 plugins:
   - jemoji
