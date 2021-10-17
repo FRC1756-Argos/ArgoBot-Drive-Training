@@ -31,17 +31,18 @@ If you didn't notice this, try this to see the issue:
 2. We want to see what the joystick inputs are, so we'll add some print statements.
 3. In your current drive control function, add print statements like this:
    ```cpp
-   printf("Left speed: %0.2f, Right speed: %0.2f\n", leftSpeed, rightSpeed);
+   wpi::outs() << "Left speed:" << leftSpeed << ", Right speed:" << rightSpeed << '\n';
    ```
    The important parts of this are:
-   * `%0.2f` inserts a floating point number with two decimal places
+   * `wpi::outs()` outputs to the [roboRIO console](https://docs.wpilib.org/en/stable/docs/software/vscode-overview/debugging-robot-program.html#debugging-with-print-statements)
+   * The `<<` are used between each printed element so variables can be formatted into a logged string
    * `\n` prints a new line after each log
-   * `leftSpeed` and `rightSpeed` are the values being printed in the two `%0.2f` placeholders
 4. Deploy the robot code.
 5. Enable the robot in the driver station
-6. While the robot is enabled, you should see logs printed in the new pane that opened on deploy in VSCode.
-![VSCode Log Output]({{ baseImagePath }}/VSCode_Logging_0.png)
-7. If you don't see the logs, make sure you set the team number and reconnect with the buttons in that pane.
+6. While the robot is enabled, open console by clicking the gear then "View Console" in the driver station.
+![Driver Station Open Console]({{ baseImagePath }}/DriverStation_Console_0.png)
+7. A window will pop up with many log statements updating with joystick values.
+![Driver Station Console]({{ baseImagePath }}/DriverStation_Console_1.png)
 8. You should see that the joystick input values rarely go back to `0.00`.
 
 </details>
@@ -95,7 +96,35 @@ If you have any ideas on how to do this, try it on your own before following the
 
 ### Make a Deadband Function
 
+1. Let's start by opening `RobotContainer.h` and make a new deadband function declaration.
+2. This function should have two `double` input and return a `double`
+   ```cpp
+   static double deadband(const double input, const double threshold);
+   ```
+3. Now, in `RobotContainer.cpp` add the deadband function definition.
+   ```cpp
+   double RobotContainer::deadband(const double input, const double threshold) {
+   }
+   ```
+4. Next, we'll add code that implements the code design.  If the input exceeds our deadband threshold, we should output the input value.  Otherwise, we are in the deadband region and we'll output 0.  Keep in mind, the threshold check applies to positive and negative values, so we'll use `std::abs()` to calculate the absolute value.
+   ```cpp
+   double RobotContainer::deadband(const double input, const double threshold) {
+     if(std::abs(input) > std::abs(threshold)) {
+       return input;
+     }
+     return 0;
+   }
+   ```
+5. Finally, let's add this deadband function to the calls to our drive function.  We'll use a threshold of 0.1 here, but if you can use a bigger or smaller value based on the values you saw in the console earlier.
+  ```cpp
+  m_drive.TankDrive(deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1, 0.2),
+                    deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightY)) * -1, 0.2));
+  ```
+
 ### Try It Out
+
+1. Now that we've added the deadband, try deploying your code and driving the robot again.
+2. Check out the console output to see if it's working as expected.
 
 </details>
 
@@ -164,7 +193,7 @@ Now, let's add the deadband VI to our tank drive VI to see it in action.
 6. Probe before and after the deadband blocks
 ![Deadband Test]({{ baseImagePath }}/Deadband_Integration_1.png)
 
-</detail>
+</details>
 
 How does this work compared to the non-deadbanded tank drive?
 
