@@ -11,8 +11,8 @@ RobotContainer::RobotContainer()
   // Initialize all of your commands and subsystems here
   m_drive.SetDefaultCommand(frc2::RunCommand(
     [this] {
-      m_drive.TankDrive(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1,
-                        m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightY)) * -1);
+      m_drive.TankDrive(deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1, 0.2),
+                        deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightY)) * -1, 0.2));
       // m_drive.ArcadeDrive(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1,
       //                     m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightX)));
     },
@@ -30,4 +30,11 @@ void RobotContainer::ConfigureButtonBindings() {
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
   return nullptr;
+}
+
+double RobotContainer::deadband(const double input, const double threshold) {
+  if(std::abs(input) > std::abs(threshold)) {
+    return input;
+  }
+  return 0;
 }

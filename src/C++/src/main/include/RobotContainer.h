@@ -21,6 +21,8 @@ class RobotContainer {
 
   frc2::Command* GetAutonomousCommand();
 
+  static double deadband(const double input, const double threshold);
+
  private:
   // The robot's subsystems and commands are defined here...
   DriveSubsystem m_drive;

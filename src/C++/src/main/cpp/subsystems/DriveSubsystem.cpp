@@ -11,7 +11,7 @@ DriveSubsystem::DriveSubsystem(const int leftDriveId, const int rightDriveId)
 }
 
 void DriveSubsystem::TankDrive(const double leftSpeed, const double rightSpeed) {
-  printf("Left speed: %0.2f, Right speed: %0.2f\n", leftSpeed, rightSpeed);
+  wpi::outs() << "Left speed:" << leftSpeed << ", Right speed:" << rightSpeed << '\n';
   m_leftDrive.Set(ControlMode::PercentOutput, leftSpeed);
   m_rightDrive.Set(ControlMode::PercentOutput, rightSpeed);
 }
