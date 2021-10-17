@@ -23,6 +23,33 @@ If you don't remember how to do any of the steps, you can go back to the previou
 You may have noticed when driving the robot, that the motors move slightly even when you don't touch the joysticks.
 If you didn't notice this, try this to see the issue:
 
+### C++
+
+<details markdown="block" open>
+
+1. Open `DriveSubsystem.cpp`
+2. We want to see what the joystick inputs are, so we'll add some print statements.
+3. In your current drive control function, add print statements like this:
+   ```cpp
+   printf("Left speed: %0.2f, Right speed: %0.2f\n", leftSpeed, rightSpeed);
+   ```
+   The important parts of this are:
+   * `%0.2f` inserts a floating point number with two decimal places
+   * `\n` prints a new line after each log
+   * `leftSpeed` and `rightSpeed` are the values being printed in the two `%0.2f` placeholders
+4. Deploy the robot code.
+5. Enable the robot in the driver station
+6. While the robot is enabled, you should see logs printed in the new pane that opened on deploy in VSCode.
+![VSCode Log Output]({{ baseImagePath }}/VSCode_Logging_0.png)
+7. If you don't see the logs, make sure you set the team number and reconnect with the buttons in that pane.
+8. You should see that the joystick input values rarely go back to `0.00`.
+
+</details>
+
+### LabVIEW
+
+<details markdown="block">
+
 1. Run your robot code as normal from `ArgoBot_Main.vi`
 2. Pick up the robot and hold it near your ear so you can hear the sound of the motors and motor controller
   - Make sure you keep the robot wheels away from any hair, jewelry, or loose clothing.  These could get tangled up in the wheels.
@@ -39,6 +66,8 @@ If you didn't notice this, try this to see the issue:
 ![Deadband Double Probe]({{ baseImagePath }}/Deadband_Probe_1.png)
 11. Now that we see the symptom, let's find the cause.  Open up the drive VI you're using and probe the Joystick values
 ![Deadband Joystick Probe]({{ baseImagePath }}/Deadband_Probe_2.png)
+
+</details>
 
 Looks like those joysticks don't always stay at 0.
 This isn't really noticeable on the ArgoBot since it needs quite a bit of output before the motors move, but on an FRC robot, 10% can be significant.
@@ -59,7 +88,22 @@ Instead, we'll use a threshold of 0.1 or 10%.
 
 If you have any ideas on how to do this, try it on your own before following the step-by-step instructions.
 
-## Making a New VI
+
+## C++
+
+<details markdown="block" open>
+
+### Make a Deadband Function
+
+### Try It Out
+
+</details>
+
+## LabVIEW
+
+<details markdown="block">
+
+### Making a New VI
 
 Sometimes, we have some code that we want to re-use in several places.
 In these situations we could copy and paste that code for each instance, but then making changes becomes difficult.
@@ -93,7 +137,7 @@ Instead, we're going to make a new VI that implements our deadband.
 
 Now we have a starting point for our VI with the necessary input and output.
 
-## Add Deadband Logic
+### Add Deadband Logic
 
 1. Go to the block diagram of your new deadband VI
 2. Use the absolute value block from the numeric palette and the greater than and selector blocks from the comparison palette to implement the following:
@@ -107,7 +151,7 @@ else:
 ![Deadband Final]({{ baseImagePath }}/Deadband_Final.png)
 4. Save your VI
 
-## Try It Out
+### Try It Out
 
 Now, let's add the deadband VI to our tank drive VI to see it in action.
 
@@ -119,6 +163,8 @@ Now, let's add the deadband VI to our tank drive VI to see it in action.
 5. Run `ArgoBot_Main.vi`
 6. Probe before and after the deadband blocks
 ![Deadband Test]({{ baseImagePath }}/Deadband_Integration_1.png)
+
+</detail>
 
 How does this work compared to the non-deadbanded tank drive?
 
