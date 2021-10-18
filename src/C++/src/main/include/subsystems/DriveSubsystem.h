@@ -13,6 +13,7 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
   void TankDrive(const double leftSpeed, const double rightSpeed);
   void ArcadeDrive(const double forwardSpeed, const double turnSpeed);
+  void ButtonDrive(const bool forward, const bool right, const bool reverse, const bool left);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

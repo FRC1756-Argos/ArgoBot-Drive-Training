@@ -11,10 +11,14 @@ RobotContainer::RobotContainer()
   // Initialize all of your commands and subsystems here
   m_drive.SetDefaultCommand(frc2::RunCommand(
     [this] {
-      m_drive.TankDrive(deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1, 0.2),
-                        deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightY)) * -1, 0.2));
+      // m_drive.TankDrive(deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1, 0.2),
+      //                   deadband(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightY)) * -1, 0.2));
       // m_drive.ArcadeDrive(m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kLeftY)) * -1,
       //                     m_controller.GetRawAxis(static_cast<int>(frc::XboxController::Axis::kRightX)));
+      m_drive.ButtonDrive(m_controller.GetRawButton(static_cast<int>(frc::XboxController::Button::kY)),
+                          m_controller.GetRawButton(static_cast<int>(frc::XboxController::Button::kB)),
+                          m_controller.GetRawButton(static_cast<int>(frc::XboxController::Button::kA)),
+                          m_controller.GetRawButton(static_cast<int>(frc::XboxController::Button::kX)));
     },
     {&m_drive}
   ));

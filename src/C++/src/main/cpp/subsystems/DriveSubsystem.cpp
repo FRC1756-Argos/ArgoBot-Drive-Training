@@ -21,5 +21,19 @@ void DriveSubsystem::ArcadeDrive(const double forwardSpeed, const double turnSpe
   m_rightDrive.Set(ControlMode::PercentOutput, forwardSpeed - turnSpeed);
 }
 
+void DriveSubsystem::ButtonDrive(const bool forward, const bool right, const bool reverse, const bool left) {
+  if(forward) {
+    ArcadeDrive(0.5, 0);
+  } else if(reverse) {
+    ArcadeDrive(-0.5, 0);
+  } else if(right) {
+    ArcadeDrive(0, 0.5);
+  } else if(left) {
+    ArcadeDrive(0, -0.5);
+  } else {
+    ArcadeDrive(0, 0);
+  }
+}
+
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() {}
