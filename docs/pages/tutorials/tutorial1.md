@@ -113,15 +113,15 @@ DriveSubsystem(const int leftDriveID, const int rightDriveID);
    // Copyright (c) FIRST and other WPILib contributors.
    // Open Source Software; you can modify and/or share it under the terms of
    // the WPILib BSD license file in the root directory of this project.
-   
+
    #include "subsystems/DriveSubsystem.h"
-   
+
    DriveSubsystem::DriveSubsystem(const int leftDriveID, const int rightDriveID)
      : m_leftMotor(leftDriveID)
      , m_rightMotor(rightDriveID) {
-   
+
    }
-   
+
    // This method will be called once per scheduler run
    void DriveSubsystem::Periodic() {}
    ```
@@ -149,13 +149,13 @@ private:
    // Copyright (c) FIRST and other WPILib contributors.
    // Open Source Software; you can modify and/or share it under the terms of
    // the WPILib BSD license file in the root directory of this project.
-   
+
    #pragma once
-   
+
    #include <frc2/command/Command.h>
    #include "subsystems/DriveSubsystem.h"
    #include <frc/XboxController.h>
-   
+
    /**
     * This class is where the bulk of the robot should be declared.  Since
     * Command-based is a "declarative" paradigm, very little robot logic should
@@ -166,14 +166,14 @@ private:
    class RobotContainer {
     public:
      RobotContainer();
-   
+
      frc2::Command* GetAutonomousCommand();
-   
+
     private:
      // The robot's subsystems and commands are defined here...
      DriveSubsystem m_drive;
      frc::XboxController m_controller;
-   
+
      void ConfigureButtonBindings();
    };
    ```
@@ -194,22 +194,22 @@ RobotContainer::RobotContainer()
    // Copyright (c) FIRST and other WPILib contributors.
    // Open Source Software; you can modify and/or share it under the terms of
    // the WPILib BSD license file in the root directory of this project.
-   
+
    #include "RobotContainer.h"
-   
+
    RobotContainer::RobotContainer()
      : m_drive{2, 1}
      , m_controller{0} {
      // Initialize all of your commands and subsystems here
-   
+
      // Configure the button bindings
      ConfigureButtonBindings();
    }
-   
+
    void RobotContainer::ConfigureButtonBindings() {
      // Configure your button bindings here
    }
-   
+
    frc2::Command* RobotContainer::GetAutonomousCommand() {
      // An example command will be run in autonomous
      return nullptr;
@@ -231,23 +231,23 @@ void TankDrive(const double leftDrive, const double rightDrive);
    // Copyright (c) FIRST and other WPILib contributors.
    // Open Source Software; you can modify and/or share it under the terms of
    // the WPILib BSD license file in the root directory of this project.
-   
+
    #pragma once
-   
+
    #include <frc2/command/SubsystemBase.h>
    #include <ctre/Phoenix.h>
-   
+
    class DriveSubsystem : public frc2::SubsystemBase {
     public:
      DriveSubsystem(const int leftDriveID, const int rightDriveID);
-   
+
      void TankDrive(const double leftDrive, const double rightDrive);
-   
+
      /**
       * Will be called periodically whenever the CommandScheduler runs.
       */
      void Periodic() override;
-   
+
     private:
      // Components (e.g. motor controllers and sensors) should generally be
      // declared private and exposed only through public methods.
@@ -271,25 +271,25 @@ void DriveSubsystem::TankDrive(const double leftDrive, const double rightDrive) 
    // Copyright (c) FIRST and other WPILib contributors.
    // Open Source Software; you can modify and/or share it under the terms of
    // the WPILib BSD license file in the root directory of this project.
-   
+
    #include "subsystems/DriveSubsystem.h"
-   
+
    DriveSubsystem::DriveSubsystem(const int leftDriveID, const int rightDriveID)
      : m_leftMotor(leftDriveID)
      , m_rightMotor(rightDriveID) {
-   
+
    }
-   
+
    void DriveSubsystem::TankDrive(const double leftDrive, const double rightDrive) {
      m_leftMotor.Set(ControlMode::PercentOutput, leftDrive);
      m_rightMotor.Set(ControlMode::PercentOutput, rightDrive);
    }
-   
+
    // This method will be called once per scheduler run
    void DriveSubsystem::Periodic() {}
    ```
     </details>
-7. Finally, let's connect the controller joysticks to our new `TankDrive()` function.  Start by opening `RobotController.cpp`
+7. Finally, let's connect the controller joysticks to our new `TankDrive()` function.  Start by opening `RobotContainer.cpp`
 8. First, we need to add another header to support running commands.  Include `frc2/command/RunCommand.h`
 ```cpp
 #include <frc2/command/RunCommand.h>
@@ -303,9 +303,9 @@ m_drive.SetDefaultCommand(frc2::RunCommand(
   },
   {&m_drive}));
 ```
-10. Now `RobotController.cpp` should look like this:
+10. Now `RobotContainer.cpp` should look like this:
 <details markdown="block">
-<summary>RobotController.cpp</summary>
+<summary>RobotContainer.cpp</summary>
 
 ```cpp
 // Copyright (c) FIRST and other WPILib contributors.
