@@ -6,6 +6,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <ctre/Phoenix.h>
+#include <chrono>
 
 class DriveSubsystem : public frc2::SubsystemBase {
  public:
@@ -26,4 +27,14 @@ class DriveSubsystem : public frc2::SubsystemBase {
   // declared private and exposed only through public methods.
   TalonSRX m_leftDrive;
   TalonSRX m_rightDrive;
+
+  class SpeedRamp {
+    public:
+      SpeedRamp(double pctPerSecond);
+      double operator()(const double newSample);
+    private:
+      const double m_pctPerSecond;
+      double       m_lastOutput;
+      std::chrono::time_point<std::chrono::steady_clock> m_lastUpdateTime;
+  };
 };
