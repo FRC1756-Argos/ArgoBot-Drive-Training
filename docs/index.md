@@ -20,7 +20,7 @@ Start here to drive your robot with different joystick controls
 1. [Tank Drive](pages/tutorials/tutorial1.md)
 2. [Arcade Drive](pages/tutorials/tutorial2.md)
 3. [Button Drive](pages/tutorials/tutorial3.md)
-4. [*Cheezy Drive*](pages/tutorials/tutorial4.md)
+4. [Cheezy Drive](pages/tutorials/tutorial4.md)
 
 ## Refinements
 
