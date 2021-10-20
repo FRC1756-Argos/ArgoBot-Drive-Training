@@ -167,10 +167,10 @@ This will be similar to debounce, but now we'll use time to control our ramp spe
       auto changeDirection = std::copysign(1.0, newSample - m_lastOutput);
       auto desiredChangeMagnitude = std::abs(newSample - m_lastOutput);
       auto maxTimeRampMagnitude = m_pctPerSecond * seconds;
-      auto delta = changeDirection * std::max(desiredChangeMagnitude, maxTimeRampMagnitude);
+      auto delta = changeDirection * std::min(desiredChangeMagnitude, maxTimeRampMagnitude);
     }
    ```
-   `std::max` is a function that returns the largest value from a list of parameters.
+   `std::min` is a function that returns the smallest value from a list of parameters.
 16. Great!  Almost done.  Finally, we'll generate our output
    ```cpp
     double DriveSubsystem::SpeedRamp::operator()(const double newSample) {
@@ -181,7 +181,7 @@ This will be similar to debounce, but now we'll use time to control our ramp spe
       auto changeDirection = std::copysign(1.0, newSample - m_lastOutput);
       auto desiredChangeMagnitude = std::abs(newSample - m_lastOutput);
       auto maxTimeRampMagnitude = m_pctPerSecond * seconds;
-      auto delta = changeDirection * std::max(desiredChangeMagnitude, maxTimeRampMagnitude);
+      auto delta = changeDirection * std::min(desiredChangeMagnitude, maxTimeRampMagnitude);
 
       m_lastOutput += delta;
       return m_lastOutput;
