@@ -35,5 +35,11 @@ void DriveSubsystem::ButtonDrive(const bool forward, const bool right, const boo
   }
 }
 
+void DriveSubsystem::CheezyDrive(const bool arcadeDrive, const double forwardSpeed, const double turnSpeed) {
+  auto turnPower = arcadeDrive ? turnSpeed : turnSpeed * std::abs(forwardSpeed);
+  m_leftDrive.Set(ControlMode::PercentOutput, forwardSpeed + turnPower);
+  m_rightDrive.Set(ControlMode::PercentOutput, forwardSpeed - turnPower);
+}
+
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() {}
